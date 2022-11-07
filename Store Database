@@ -1,0 +1,48 @@
+**Created Table for "shoesRus"** 
+
+CREATE TABLE shoesRus (
+id INTEGER PRIMARY KEY,
+aisle_location INTEGER,
+shoe_type TEXT,
+color TEXT,
+price INTEGER
+);
+
+insert into shoesRus VALUES (1, 12,"Vans", "red", 69.99);
+
+insert into shoesRus VALUES (2, 12, "Airwalk Classic", "black", 50.00);
+
+insert into shoesRus VALUES (3, 4, "Hightop Air Jordan", "blue", 99.99);
+
+insert into shoesRus VALUES (4, 6, "Nike", "brown", 149.99);
+
+insert into shoesRus VALUES (5, 9, "Osiris Skate Shoe", "white", 80.00);
+
+insert into shoesRus VALUES (6, 2, "Vans", "black/White", 65.00);
+
+insert into shoesRus VALUES (7, 4, "Flip Flop", "black", 23.99);
+
+insert into shoesRus VALUES (8, 6, "Reebok Tennis", "white", 50.00);
+
+insert into shoesRus VALUES (9, 13, "FILA slick", "maroon", 83.00);
+
+insert into shoesRus VALUES (10, 13, "PUMA Running shoe", "red", 65.00);
+
+insert into shoesRus VALUES (11, 2, "Adidas Skate", "light blue", 70.00);
+
+insert into shoesRus VALUES (12, 5, "TOMS slip on", "pink", 50.00);
+
+insert into shoesRus VALUES (13, 1, "Etnies Skate", "black", 49.99);
+
+insert into shoesRus VALUES (14, 11, "Hokah", "White/yellow", 80.00);
+
+insert into shoesRus VALUES(15, 14, "Nike", "white", 150.00);
+
+
+**Display databsase orders by ascending price**
+
+select * from shoesRus order by price asc;
+
+**Created a display of the sum price of reoccuring shoes types**
+
+select shoe_type, sum(price) from shoesRus group by Shoe_type
