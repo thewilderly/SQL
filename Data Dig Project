@@ -184,7 +184,7 @@ from astronauts group by name having Space_flight_hr > 10000;
 
 SELECT name, birth_date as "DOB", death_date "DOD" from astronauts order by death_date;
 
-/* List of astronauts with history in the Air FOrce to include their rank*/
+/* List of astronauts with history in the Air Force to include their rank*/
 
 SELECT name, military_rank from astronauts
 where Military_Branch = "US Air Force" or Military_Branch = "US Air Force (Retired)"
