@@ -39,7 +39,7 @@ insert into shoesRus VALUES (14, 11, "Hokah", "White/yellow", 80.00);
 insert into shoesRus VALUES(15, 14, "Nike", "white", 150.00);
 
 
-**Display databsase orders by ascending price**
+**Display databsase orders by ascending price** 
 
 select * from shoesRus order by price asc;
 
