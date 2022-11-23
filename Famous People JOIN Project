@@ -1,0 +1,72 @@
+ /* Lists of Famous Actors/Actresses, Religion, and Achievements */
+ 
+CREATE TABLE Famous_People 
+( id INTEGER PRIMARY KEY AUTOINCREMENT,
+fullname TEXT,
+age INTEGER,
+gender TEXT,
+home_state TEXT,
+ethnicity TEXT);
+
+INSERT INTO Famous_People (fullname, age, gender, home_state, ethnicity) 
+VALUES ("Christian Bale", 48, "Male", "Haverfordwest", "Caucasion/White");
+INSERT INTO Famous_People (fullname, age, gender, home_state, ethnicity)
+VALUES ("Chadwick Boseman", 43, "Male",  "South Carolina", "African American");
+INSERT INTO Famous_People (fullname, age, gender, home_state, ethnicity)
+VALUES ("Halle Berry", 56, "Female", "Ohio", "African American/White");
+INSERT INTO Famous_People (fullname, age, gender, home_state, ethnicity)
+VALUES ("Sarah Silverman", 51, "Female", "New Hampshire", "Jewish");
+
+CREATE TABLE religion
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+persons_id INTEGER);
+
+INSERT INTO religion (name, persons_id)
+VALUES ("Agnostic", 1);
+INSERT INTO religion (name, persons_id)
+VALUES ("Christian", 2);
+INSERT INTO religion (name, persons_id)
+VALUES ("Christian", 3);
+INSERT INTO religion (name, persons_id)
+VALUES ("No Religion", 4);
+
+CREATE TABLE achievements 
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+awards_won INTEGER,
+total_movies INTEGER,
+person_id INTEGER);
+
+INSERT INTO achievements (awards_won, total_movies, person_id)
+VALUES (29, 56, 1);
+INSERT INTO achievements (awards_won, total_movies, person_id)
+VALUES (42, 15, 2);
+INSERT INTO achievements (awards_won, total_movies, person_id)
+VALUES (25, 40, 3);
+INSERT INTO achievements (awards_won, total_movies, person_id)
+VALUES (3, 50, 4);
+
+/* Created a mass JOIN table of all lists */
+
+SELECT *
+FROM Famous_People
+JOIN achievements
+ON Famous_People.id=achievements.person_id
+JOIN religion
+ON Famous_People.id=religion.persons_id;
+
+/* Created JOIN Table listing actors/actresses home town and total movies they have been a part of */
+
+SELECT fullname AS "Actor/Actress", home_state AS "Home State", total_movies AS "Total Movies" 
+FROM Famous_People
+JOIN achievements 
+ON Famous_People.id=achievements.person_id
+ORDER BY total_movies;
+
+/* Created JOIN Table showing actor/actress age and religion */
+
+SELECT fullname AS "Actor/Actress", age AS "Age", name AS "Religion"
+FROM Famous_People
+JOIN Religion
+ON Famous_People.id=Religion.persons_id
+ORDER BY age;
