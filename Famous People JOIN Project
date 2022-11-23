@@ -63,7 +63,7 @@ JOIN achievements
 ON Famous_People.id=achievements.person_id
 ORDER BY total_movies;
 
-/* Created JOIN Table showing actor/actress age and religion */
+/* Created JOIN Table showing actor/actress age and religion */ 
 
 SELECT fullname AS "Actor/Actress", age AS "Age", name AS "Religion"
 FROM Famous_People
