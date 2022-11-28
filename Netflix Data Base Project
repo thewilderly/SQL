@@ -1,0 +1,26 @@
+/* In this project I used a Netflix data base to answer questions related to said data*/
+
+/*When was the most recent batch of tv shows and/or movies added to the database?*/
+select * from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+order by release_year desc;
+
+/*Who was the Director for the movie Bright Star?*/
+select 
+director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON titles.show_id=people.show_id
+where titles.title='Bright Star';
+
+/*What is the oldest movie in the database and what year was it made?*/
+select 
+title, release_year
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+where type = 'Movie'
+order by release_year asc
+limit 1;
+
+/*List all the movies and tv shows in alphabetical order*/
+select * from 
+"CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+order by title asc;
