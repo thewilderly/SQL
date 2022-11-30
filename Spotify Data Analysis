@@ -1,0 +1,37 @@
+select artist_name, popularity from BIT_DB.Spotifydata
+order by popularity desc
+limit 10;
+
+select track_name, liveness from BIT_DB.Spotifydata
+order by liveness asc
+limit 1;
+
+select track_name, tempo, popularity from BIT_DB.Spotifydata
+where popularity >89
+order by popularity desc;
+
+select * from BIT_DB.Spotifydata
+order by popularity desc
+limit 3;
+
+select artist_name, track_name, (duration_ms/1000)/60 as "Duration" 
+from BIT_DB.Spotifydata
+order by Duration desc;
+
+select track_name, popularity, danceability from BIT_DB.Spotifydata
+order by popularity desc
+limit 10;
+
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
+)
+
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90
+ORDER BY average_popularity desc;
