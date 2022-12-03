@@ -1,0 +1,50 @@
+SELECT FirstName, LastName, CustomerId, Country 
+FROM chinook.customers 
+WHERE Country != "USA";
+
+SELECT * FROM chinook.customers 
+WHERE Country = "Brazil" ;
+
+SELECT cust.FirstName, cust.LastName, inv.InvoiceId, inv.BillingCountry, inv.InvoiceDate
+FROM chinook.invoices as inv 
+LEFT JOIN chinook.customers as cust 
+on inv.CustomerId = cust.CustomerId 
+WHERE inv.BillingCountry = "Brazil";
+
+SELECT * FROM chinook.Employees
+WHERE Title = "Sales Support Agent";
+
+SELECT distinct BillingAddress from chinook.invoices;
+
+SELECT emp.LastName, emp.Firstname, inv.InvoiceId
+FROM chinook.Employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+select i.total, c.FirstName, c.LastName, c.country, e.FirstName, e.LastName
+From chinook.employees as e
+join chinook.customers as c 
+on e.EmployeeId = c.SupportRepId
+join chinook.invoices as i
+on i.CustomerId=c.CustomerId;
+
+select count(*) from chinook.invoices
+where InvoiceDate like '%2009%';
+
+SELECT SUM(Total)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+select t.name, i.InvoiceLineId 
+from chinook.invoice_items as i 
+join chinook.tracks as t
+on t.trackid=i.TrackId;
+
+SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
+FROM chinook.Invoice_items i
+LEFT JOIN chinook.tracks t 
+ON i.TrackID=t.TrackID
+INNER JOIN chinook.albums a
+ON a.AlbumID=t.AlbumID
+LEFT JOIN chinook.artists ar
+ON ar.ArtistID=a.ArtistID;
